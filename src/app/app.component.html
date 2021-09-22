@@ -1,0 +1,168 @@
+<div style="text-align: center;">
+  <h3>Tree Grid Demo</h3>
+</div>
+<div>
+
+  <ejs-treegrid id='TreeGrid' [dataSource]='data' [treeColumnIndex]='1' [sortSettings]="sortSettings"
+    [allowFiltering]="true" [allowSorting]="true" [allowResizing]='true' [allowReordering]='true'
+    childMapping='subtasks' [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbarOptions'
+    [allowRowDragAndDrop]='true' [rowDropSettings]='rowDrop' [selectionSettings]='selectionSettings'
+    [contextMenuItems]='contextMenuItems' (contextMenuClick)='contextMenuClick($event)'
+    (contextMenuOpen)='contextMenuOpen($event)' (queryCellInfo)='customiseCell($event)' allowTextWrap='true'
+    [textWrapSettings]='wrapSettings'>
+    <e-columns>
+      <e-column field='taskID' headerText='Task ID' [isPrimaryKey]='true' textAlign='center' width=70></e-column>
+      <e-column field='taskName' headerText='Task Name' textAlign='Left' width=200
+        [customAttributes]='customAttributes'></e-column>
+      <e-column field='startDate' headerText='Start Date' textAlign='Right' width=90></e-column>
+      <e-column field='duration' headerText='Duration' textAlign='center' width=80></e-column>
+    </e-columns>
+  </ejs-treegrid>
+</div>
+
+<!-- DATA TYPE DAILOG -->
+ <div [ngStyle]="{'display': displaydatatype}">
+  <div class="backdrop" [ngStyle]="{'display': displaydatatype}"></div>
+  <ejs-dialog id='dialog' #template (open)="dialogOpen()" [height]='height'
+    [target]='targetElement' width='435px' [ngStyle]="{'display': displaydatatype}">
+    <div class="row">
+      <ejs-radiobutton label="string" name="payment" value="string" (change)="onChangeDataType($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="number" name="payment" value="number" (change)="onChangeDataType($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="boolean" name="payment" value="boolean" (change)="onChangeDataType($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="date" name="payment" value="date" (change)="onChangeDataType($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="datetime" name="payment" value="datetime" (change)="onChangeDataType($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div>
+      <button ejs-button cssClass="e-warning" (click)="cancelDataType()">OK</button>
+  </div>
+  </ejs-dialog>
+</div>
+
+<div [ngStyle]="{'display': displaydefault}">
+  <div class="backdrop" [ngStyle]="{'display': displaydefault}"></div>
+  
+  <ejs-dialog id='dialog' #template (open)="dialogOpen()" [height]='height'
+    [target]='targetElement' width='435px' [ngStyle]="{'display': displaydefault}">
+    <div class="row material2">
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6"><b>Set Default Value</b></div>
+  </div>
+  <br>
+  <div class="row material2">
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+          <ejs-textbox placeholder="Value" cssClass="e-outline" floatLabelType="Auto" [(ngModel)]='choosedDefaultValue' name='choosedDefaultValue'></ejs-textbox>
+      </div>
+  </div>
+  <br>
+  <div>
+    <button ejs-button cssClass="e-warning" (click)="cancelDefault()">save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button ejs-button cssClass="e-warning" (click)="cancelDefault()">OK</button>
+</div>
+  </ejs-dialog>
+</div>
+
+<div [ngStyle]="{'display': displayfont}">
+  <div class="backdrop" [ngStyle]="{'display': displayfont}"></div>
+
+  <ejs-dialog id='dialog' #template (open)="dialogOpen()" [height]='height' [target]='targetElement' width='435px'
+    [ngStyle]="{'display': displayfont}">
+    <div class="row">
+      <ejs-radiobutton label="xx-small" name="payment" value="xx-small" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="x-small" name="payment" value="x-small" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="small" name="payment" value="small" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="medium" name="payment" value="medium" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="large" name="payment" value="large" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="x-large" name="payment" value="x-large" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div class="row">
+      <ejs-radiobutton label="xx-large" name="payment" value="xx-large" (change)="onChangeFont($event)"></ejs-radiobutton>
+    </div>
+    <br>
+    <div>
+      <button ejs-button cssClass="e-warning" (click)="cancelFont()">OK</button>
+  </div>
+  </ejs-dialog>
+</div>
+<!-- COLOR DAILOG -->
+<div [ngStyle]="{'display': displaycolor}">
+  <div class="backdrop" [ngStyle]="{'display': displaycolor}"></div>
+  <!-- <div #container class='root-container'></div> -->
+  <ejs-dialog id='dialog' #template (open)="dialogOpen()" [height]='height' [target]='targetElement' width='435px'
+    [ngStyle]="{'display': displaycolor}">
+    <ng-template #footerTemplate>
+      <input ejs-colorpicker #colorpicker id="element" (change)="onChange($event)" />
+    </ng-template>
+    <ng-template #header>
+      <div title="Nancy" class="e-icon-settings dlg-template"> Choose Color </div>
+    </ng-template>
+  </ejs-dialog>
+</div>
+<!-- ALIGN MENT DAILOG -->
+<div [ngStyle]="{'display': displayalign}">
+  <div class="backdrop" [ngStyle]="{'display': displayalign}"></div>
+  <ejs-dialog id='dialog' #template (open)="dialogOpen()" [height]='height' [target]='targetElement' width='435px'
+    [ngStyle]="{'display': displayalign}">
+    <div class="radiobutton-control">
+      <h4>Select One</h4>
+      <div class="row">
+        <ejs-radiobutton label="Right" name="payment" value="right" checked="true" (change)="onChangeAlign($event)">
+        </ejs-radiobutton>
+      </div>
+      <br>
+      <div class="row">
+        <ejs-radiobutton label="Left" name="payment" value="left" (change)="onChangeAlign($event)"></ejs-radiobutton>
+      </div>
+      <br>
+      <div class="row">
+        <ejs-radiobutton label="Center" name="payment" value="center" (change)="onChangeAlign($event)"></ejs-radiobutton>
+      </div>
+      <br>
+      <!-- <div class="row">
+          <ejs-radiobutton label="Cash on Delivery" name="payment" value="cashondelivery" (change)="onChange($event)"></ejs-radiobutton>
+      </div>
+      <div class="row">
+          <ejs-radiobutton label="Other Wallets" name="payment" value="others" (change)="onChange($event)"></ejs-radiobutton>
+      </div> -->
+    </div>
+  </ejs-dialog>
+</div>
+<!--<div [ngStyle]="{'display': displaytextwrap}">
+  <div class="backdrop" [ngStyle]="{'display': displaytextwrap}"></div>
+  <ejs-dialog id='dialog' #template (open)="dialogOpen()" [height]='height'
+    [target]='targetElement' width='435px' [ngStyle]="{'display': display}">
+    <ng-template #footerTemplate>
+      <input ejs-colorpicker #colorpicker id="element" (change)="onChange($event)" />
+    </ng-template>
+    <ng-template #header>
+      <div title="Nancy" class="e-icon-settings dlg-template"> Choose Color </div>
+    </ng-template>
+  </ejs-dialog>
+</div> -->
