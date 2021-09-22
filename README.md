@@ -9,6 +9,13 @@ Run `npm i` to install node_modules.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+
+##Column Headers Working
+  1. Right click on column header
+  2. choose any option 
+  3. select funtionality
+  4. click again on column header to see changes
+
 ## Issues
   1.Freeze On/Off: column freeze is not yet supported in syncfusion angular.
 
