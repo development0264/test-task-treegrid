@@ -13,7 +13,7 @@ import {
   RowDDService,
   EditService,
   ColumnMenuService,
-  ContextMenuService } from '@syncfusion/ej2-angular-treegrid';
+  ContextMenuService,TreeGridAllModule } from '@syncfusion/ej2-angular-treegrid';
 import { ContextMenuModule } from '@syncfusion/ej2-angular-navigations';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { ColorPickerModule,TextBoxModule } from '@syncfusion/ej2-angular-inputs';
@@ -37,7 +37,8 @@ enableRipple(true);
     ButtonModule, 
     CheckBoxModule, 
     RadioButtonModule, 
-    SwitchModule
+    SwitchModule,
+    TreeGridAllModule
   ],
   providers: [
     PageService, 

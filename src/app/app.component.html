@@ -9,7 +9,7 @@
     [allowRowDragAndDrop]='true' [rowDropSettings]='rowDrop' [selectionSettings]='selectionSettings'
     [contextMenuItems]='contextMenuItems' (contextMenuClick)='contextMenuClick($event)'
     (contextMenuOpen)='contextMenuOpen($event)' (queryCellInfo)='customiseCell($event)' allowTextWrap='true'
-    [textWrapSettings]='wrapSettings'>
+    [textWrapSettings]='wrapSettings' [frozenColumns]='2'>
     <e-columns>
       <e-column field='taskID' headerText='Task ID' [isPrimaryKey]='true' textAlign='center' width=70></e-column>
       <e-column field='taskName' headerText='Task Name' textAlign='Left' width=200
